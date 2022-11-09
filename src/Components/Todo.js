@@ -24,7 +24,8 @@ function Todo() {
 
     // Add Item
     const addItem = () => {
-        if (!currData) {
+
+        if (!currData || currData.indexOf(' ') >= 0) {
             notify();
         } else if (!action && currData) {
             setAction(true);
@@ -74,7 +75,7 @@ function Todo() {
                     <div className="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6  bg-white rounded " id='firstCol'>
                         <p className='text-center mt-3 fw-bolder fs-1' id='heading'>To Do List</p>
 
-                        <input type="text" className="form-control " value={currData} onChange={(event) => setCurrData(event.target.value)} id='inpTag' />
+                        <input type="text" className="form-control " value={currData} onChange={(event) => setCurrData(event.target.value)} id='inpTag'  />
 
                         {action ? <button className='bg-white fs-2 px-4 border-0' onClick={() => addItem()}><i className="fa fa-plus-circle" id='addBtn'></i></button> :
                             <button className='bg-white fs-2 px-4 border-0' onClick={() => addItem()}><i className=" fa fa-pencil-square-o" id='addBtn' ></i></button>}
